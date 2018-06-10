@@ -1,8 +1,6 @@
-#variables entorno
+#Module env.R
+#Variables y funciones de entorno del proyecto.
 
-#Description:
-#
-#
 env <- getwd()
 
 env.data <- paste(env, "data", sep="/")

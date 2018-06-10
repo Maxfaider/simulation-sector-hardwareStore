@@ -1,8 +1,5 @@
+#Module project.R
 #Información del proyecto
-
-# Description:
-#
-#
 
 project.name <- "simulation-sector-hardwareStore"
 project.version <- "1.0"
