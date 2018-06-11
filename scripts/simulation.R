@@ -1,10 +1,34 @@
 #Module simulation.R
 # Generar aleatorio de tablas a partir de los datos estadísticos almacenados
 
+simulation.getSamples <- function(elements, size, prob) {
+    return (
+        sample(
+            sort(levels(elements)),
+            size,
+            replace = T,
+            prob=prob
+        )
+    )
+}
+
+simulation.betweenTimes <- function(columnX, columnY) {
+    size <- length(colmnX)
+    new.column <- c()
+    previusTime <- 0
+
+    for(index in (1:size) ) {
+        new.column <- max(previusTime, columnX[index]) - columnX[index]
+        previusTime <- columnY[index]
+    }
+}
+
 simulation.run <- function(nSimulations, sizeSimulation) {
 
-    ## Simular tiempos de llegada
-    for() {
+    simulatedTables <- list()
+
+    for(index in (1:nSimulations)) {
+        ## Simular tiempos de llegada
         comingInTime <- cumsum(
             round(
                 rexp(
@@ -86,7 +110,7 @@ simulation.run <- function(nSimulations, sizeSimulation) {
         #calculo del tiempo total en el sistema
         timeTotal = waitingTime + serviceTime
         #Payment <- util.replaceCoincidences(Total, Payment)
-        simulatedTable[[index]] <- data.frame(
+        simulatedTables[[index]] <- data.frame(
             comingInTime,
             waitingTime,
             serviceTime,
@@ -103,27 +127,5 @@ simulation.run <- function(nSimulations, sizeSimulation) {
             "Payment.method" = Payment
         )
     }
-    return(simulatedTable)
-}
-
-simulation.getSamples <- function(elements, size, prob) {
-    return (
-        sample(
-            sort(levels(elements)),
-            size,
-            replace = T,
-            prob=prob
-        )
-    )
-}
-
-simulation.betweenTimes <- function(columnX, columnY) {
-    size <- length(colmnX)
-    new.column <- c()
-    previusTime <- 0
-
-    for(index in (1:size) ) {
-        new.column <- max(previusTime, columnX[index]) - columnX[index]
-        previusTime <- columnY[index]
-    }
+    return(simulatedTables)
 }

@@ -1,22 +1,12 @@
 ## Module analytics.R
 # Funciones encargadas de analizar y extraer información.
-analytics.tags <- c(
-    "averageWaitingTime",
-    "averageServiceTime",
-    "averageClientsByHour",
-    "masculinoProb",
-    "femeninoProb",
-    "payCardProb",
-    "payCashProb",
-    "youngProb",
-    "oldProb",
-    "noPurchaseProb",
-    "productBuilder",
-    "productCarpentry",
-    "productPlumbing",
-    "productElectricity",
-    "productPainting",
-    "productTools"
+
+analytics.tags <- c( "averageWaitingTime", "averageServiceTime",
+    "averageClientsByHour", "masculinoProb", "femeninoProb",
+    "payCardProb", "payCashProb", "youngProb", "oldProb",
+    "noPurchaseProb", "productBuilder", "productCarpentry",
+    "productPlumbing", "productElectricity",
+    "productPainting", "productTools"
 )
 
 analytics.getProb <- function(element, flag, clientsTotal, nFlag="") {
