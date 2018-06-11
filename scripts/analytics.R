@@ -6,17 +6,17 @@ analytics.tags <- c(
     "averageClientsByHour",
     "masculinoProb",
     "femeninoProb",
-    "tarjetaProb",
-    "acontadoProb",
+    "payCardProb",
+    "payCashProb",
     "youngProb",
     "oldProb",
     "noPurchaseProb",
-    "productsBuilder",
-    "productsCarpentry",
-    "productsPlumbing",
-    "productsElectricity",
-    "productsPainting",
-    "productsTools"
+    "productBuilder",
+    "productCarpentry",
+    "productPlumbing",
+    "productElectricity",
+    "productPainting",
+    "productTools"
 )
 
 analytics.getProb <- function(element, flag, clientsTotal, nFlag="") {
@@ -52,8 +52,8 @@ analytics.run <- function(dataTablesCollected) {
     timeInService <- c()
     nroClientsByHour <- c()
     #metodo de pago
-    tarjetaProb <- c()
-    acontadoProb <- c()
+    payCardProb <- c()
+    payCashProb <- c()
     #Datos persona
     masculinoProb <- c()
     femeninoProb <- c()
@@ -99,13 +99,13 @@ analytics.run <- function(dataTablesCollected) {
         femeninoProb[top] <- (1 - masculinoProb[top])
 
         ## Calcular la probabilidad del metodo de pago
-        tarjetaProb[top] <- analytics.getProb(
+        payCardProb[top] <- analytics.getProb(
             index$Payment.method,
             2,
             clientsTotal,
             nFlag = 0
         )
-        acontadoProb[top] <- (1 - tarjetaProb[top])
+        payCashProb[top] <- (1 - payCardProb[top])
 
         ## Calcular la prrobabilidad de la edad
         youngProb[top] <- analytics.getProb(
@@ -140,8 +140,8 @@ analytics.run <- function(dataTablesCollected) {
         mean(nroClientsByHour),
         mean(masculinoProb),
         mean(femeninoProb),
-        mean(tarjetaProb),
-        mean(acontadoProb),
+        mean(payCardProb),
+        mean(payCashProb),
         mean(youngProb),
         mean(oldProb),
         mean(noPurchaseProb),
@@ -154,6 +154,6 @@ analytics.run <- function(dataTablesCollected) {
     )
     ## Etiquetar Valores
     names(results) <- analytics.tags
-    print(productBuilder)
+
     return(results)
 }

@@ -55,3 +55,13 @@ util.moda <- function(data) {
         as.numeric(as.character(tableFreq[1,1]))
     )
 }
+
+util.replaceCoincidences <- function(dataA, dataB, soughtValue=0, replaceBy=0) {
+    size <- length(dataA)
+    for(index in (1:size)) {
+        if(dataA[index] == soughtValue) {
+            dataB[index] = replaceBy
+        }
+    }
+    return(dataB)
+}
