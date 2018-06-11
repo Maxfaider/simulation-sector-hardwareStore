@@ -24,9 +24,9 @@ util.getFile <- function(directory, file) {
     )
 }
 
-util.increment <- function(count=1) {
-    if(count == 1) {
-        return (count)
+util.increment <- function(count=0) {
+    if(count == 0) {
+        return (1)
     }
     return(count + 1)
 }
@@ -46,4 +46,12 @@ util.setDatos <- function(...) {
         top <- util.increment(top)
     }
     return(tables)
+}
+
+util.moda <- function(data) {
+    #ordenar tabla de frecuencia de forma decresiente
+    tableFreq <- as.data.frame(sort(table(data), decreasing = T,))
+    return(
+        as.numeric(as.character(tableFreq[1,1]))
+    )
 }

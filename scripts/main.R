@@ -10,7 +10,9 @@ source("./scripts/stats.R")
 
 ## Main
 stats.dataTablesCollected <- util.setDatos(
-    "datos_ferreteria_el_empuje_31_05_16.csv"
+    "datos_ferreteria_el_empuje_31_05_18.csv",
+    "datos_ferreteria_el_empuje_01_06_18.csv",
+    "datos_ferreteria_el_empuje_07_06_18.csv"
 )
 
-x <- analytics.getAverages(stats.dataTablesCollected)
+result <- analytics.run(stats.dataTablesCollected)
